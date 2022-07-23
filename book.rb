@@ -8,15 +8,13 @@ dial_book = {
 
 # get sity names
 def get_city_names(list_cities)
-  list_cities.each do |k, _v|
-    puts k
-  end
+  list_cities.keys
 end
 
 # get area code
 def get_area_code(city, list_code)
   list_code.each do |key, value|
-    return "City code is #{value}"
+    return "City code is #{value}" if key == city
   end
 end
 # loop
@@ -30,7 +28,7 @@ while attempts < 5
   puts
   puts 'Which cities do you whantt to look up the code'
   input_city = gets.chomp
-  code=get_area_code(input_city, dial_book)
+  code = get_area_code(input_city, dial_book)
   puts code
 
   break if input != 'y'
