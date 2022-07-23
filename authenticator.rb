@@ -4,13 +4,11 @@ users = [{ name: 'bizimungu', password: 'bizimungu' },
          { name: 'fazir', password: 'fazir' },
          { name: 'bizp', password: 'bizp' }]
 
-def authenticate_user(username,password,user_data)
+def authenticate_user(username, password, user_data)
   user_data.each do |single_user|
-    if single_user[:name] == username &&single_user[:password] == password
-      return single_user
-    end
+    return single_user if single_user[:name] == username && single_user[:password] == password
   end
-  return 'Credentials were not correct'
+  'Credentials were not correct'
 end
 
 puts 'Welcome to authenticator'
@@ -31,8 +29,8 @@ while attempts <= 3
   password = gets.chomp
   puts
 
-authenticate = authenticate_user(username,password,users)
-puts authenticate
+  authenticate = authenticate_user(username, password, users)
+  puts authenticate
 
   puts 'press n tot quit or any other key to continue'
   input = gets.chomp.downcase
