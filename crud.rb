@@ -33,7 +33,9 @@ secured = create_secure_users(users)
 
 def authenticate_user(username, _password, list_of_users)
   list_of_users.each do |record|
-    return record if record[:username] == username && _password == verify_hash_digest(record[:password])
+  if record[:username] == username && verify_hash_digest(record[:password]) == _password
+    return record
+  end
   end
   'credentials were not correct'
 end
